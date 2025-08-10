@@ -1,23 +1,23 @@
 #include <iostream>
 #include "Game.h"
 
-int main()
+int main() noexcept
 {
 	std::cout << "Hello, its game 'Guess Number' " << std::endl;
 
-	BigInt leftRange = 0, rightRange = 0, number = 0;
+	BigInt leftRange{ 0 }, rightRange{ 0 }, number{ 0 };
 	
 	std::cout << "Enter range of generate number: ";
 	std::cin >> leftRange >> rightRange;
 	
-	Game game(leftRange, rightRange);
+	Game game{ leftRange, rightRange };
 	
 	for (;;)
 	{
 		std::cout << "Enter number: ";
 		std::cin >> number;
 
-		State ResultGame = game.Start(number);
+		auto ResultGame{ game.Start(number) };
 		if (ResultGame == State::Correct)
 		{
 			std::cout << "You win! Congratulations!" << std::endl;
